@@ -4,6 +4,8 @@ import WithdrawButton from '../../components/WithdrawButton'
 import {FaEthereum} from "react-icons/fa"
 import {TiArrowSortedUp,TiArrowSortedDown} from "react-icons/ti"
 import {MdContentCopy} from "react-icons/md"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function FrontRunner() {
     const [trades,setTrades]=useState([1,2,3,4])
@@ -62,7 +64,7 @@ export default function FrontRunner() {
 
             </main>
         </div>
-
+        <ToastContainer />
     </div>
   )
 }

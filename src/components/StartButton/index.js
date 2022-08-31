@@ -2,6 +2,8 @@ import React from 'react'
 import bot from "../../abi.json"
 import { AccountState} from '../../recoilState/globalState'
 import {useRecoilState,useRecoilValue} from "recoil"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Web3 =require("web3")
 
 
@@ -17,8 +19,16 @@ export default function StartButton() {
   
     const start=async()=>{
         console.log("starting trade")
-        const res =await botContract.methods.start().send({from:account})
-        console.log(res)
+       if(account.length===0) return toast.error("Connect to wallet");
+        try{
+            const res =await botContract.methods.start().send({from:account})
+            console.log(res)
+            toast.success("Bot started, Frontrunning uniswap.This might take a while!");
+        }catch(e){
+            console.log(e)
+            toast.error("Something went wrong!");
+        }
+       
     }
     console.log(account,"startpae")
   return (
