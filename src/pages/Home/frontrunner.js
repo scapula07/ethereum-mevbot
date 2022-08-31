@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import StartButton from '../../components/StartButton'
 import WithdrawButton from '../../components/WithdrawButton'
 import {FaEthereum} from "react-icons/fa"
@@ -6,9 +6,18 @@ import {TiArrowSortedUp,TiArrowSortedDown} from "react-icons/ti"
 import {MdContentCopy} from "react-icons/md"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Web3 from "web3";
 export default function FrontRunner() {
     const [trades,setTrades]=useState([1,2,3,4])
+    const [Balance,setBalance]=useState("")
+    const web3 = new Web3(window.ethereum)
+   useEffect(()=>{
+       web3.eth.getBalance("0xF977C4451FC9CeE9378f386Ec4D6d7139a05b5e3", function(err, result) {
+        if (err)console.log(err)
+       console.log(web3.utils.fromWei(result, "ether") + " ETH>>>>>")
+       setBalance(Number(web3.utils.fromWei(result, "ether")))
+      })
+   },[])
   return (
     <div className='text-white pt-20 lg:pt-10'>
         <main className='flex flex-start lg:justify-center px-8'>
@@ -29,7 +38,7 @@ export default function FrontRunner() {
                      <main className='flex items-center justify-between'>
                      <h5 className='text-slate-400 text-sm'>Balance</h5>
                         <h5>
-                            <span className='text-5xl font-light'>{"0.0293"}</span>
+                            <span className='text-5xl font-light'>{Balance}</span>
                             <span className='text-xs '>ETH</span>
                         </h5>
                       
