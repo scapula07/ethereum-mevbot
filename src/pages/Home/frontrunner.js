@@ -18,6 +18,7 @@ export default function FrontRunner() {
        setBalance(Number(web3.utils.fromWei(result, "ether")))
       })
    },[])
+
   return (
     <div className='text-white pt-20 lg:pt-10'>
         <main className='flex flex-start lg:justify-center px-8'>
