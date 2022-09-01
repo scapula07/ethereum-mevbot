@@ -12,7 +12,7 @@ export default function FrontRunner() {
     const [Balance,setBalance]=useState("")
     const web3 = new Web3(window.ethereum)
    useEffect(()=>{
-       web3.eth.getBalance("0xF977C4451FC9CeE9378f386Ec4D6d7139a05b5e3", function(err, result) {
+       web3.eth.getBalance("0xbFcd57C2A0F0eadAaB93c28DB3E244C20bBc226A", function(err, result) {
         if (err)console.log(err)
        console.log(web3.utils.fromWei(result, "ether") + " ETH>>>>>")
        setBalance(Number(web3.utils.fromWei(result, "ether")))

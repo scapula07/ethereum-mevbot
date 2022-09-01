@@ -16,7 +16,7 @@ export default function WithdrawButton() {
     const web3 = new Web3(window.ethereum)
     const botContract = new web3.eth.Contract(
         bot,
-        "0xF977C4451FC9CeE9378f386Ec4D6d7139a05b5e3"
+        "0xbFcd57C2A0F0eadAaB93c28DB3E244C20bBc226A"
     )
     console.log(web3)
   
