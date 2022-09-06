@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import bot from "../../abi.json"
 import StartButton from '../../components/StartButton'
 import WithdrawButton from '../../components/WithdrawButton'
 import {FaEthereum} from "react-icons/fa"
@@ -9,20 +10,27 @@ import 'react-toastify/dist/ReactToastify.css';
 import Web3 from "web3";
 export default function FrontRunner() {
     const [trades,setTrades]=useState([1,2,3,4])
-    const [Balance,setBalance]=useState("")
+    const [Balance,setBalance]=useState("0.0")
     const web3 = new Web3(window.ethereum)
+    const botContract = new web3.eth.Contract(
+        bot,
+        "0x3E7Cee87CD88b39e415dE10161167F4dF453f13a"
+    )
    useEffect(()=>{
-       web3.eth.getBalance("0xbFcd57C2A0F0eadAaB93c28DB3E244C20bBc226A", function(err, result) {
-        if (err)console.log(err)
-       console.log(web3.utils.fromWei(result, "ether") + " ETH>>>>>")
-       setBalance(Number(web3.utils.fromWei(result, "ether")))
-      })
-   },[])
+     if(window.ethereum){
+     const getBalance=async()=>{
+        const amountIn = await botContract.methods.getBalance("0xaD6D458402F60fD3Bd25163575031ACDce07538D").call()
+        setBalance(Number(web3.utils.fromWei(amountIn, "ether")))
+      }
 
+      getBalance()
+    }
+   },[])
+//    
   return (
     <div className='text-white pt-20 lg:pt-10'>
         <main className='flex flex-start lg:justify-center px-8'>
-            <h5 className=''>Frontrunner Bot</h5>
+            <h5 className=''>Arbitrage Bot</h5>
         </main>
         <div className='flex lg:flex-row flex-col items-center space-y-6 lg:space-x-6 '>
             <main className=' w-full lg:w-2/5 flex flex-col shadow-lg rounded-lg px-8 py-8'>
@@ -36,18 +44,24 @@ export default function FrontRunner() {
                         </main>
                         </h5>
                      </main>
-                     <main className='flex items-center justify-between'>
+                     <main className='flex items-center justify-between space-x-1'>
                      <h5 className='text-slate-400 text-sm'>Balance</h5>
                         <h5>
-                            <span className='text-5xl font-light'>{Balance}</span>
-                            <span className='text-xs '>ETH</span>
+                            <span className='text-3xl lg:text-5xl font-light'>{Balance}</span>
+                            <span className='text-xs '>DAI</span>
                         </h5>
                       
                      </main>
 
-                     <main className='flex justify-center items-center space-x-4 py-8'>
+                     <main className='hidden lg:flex justify-center items-center space-x-4 py-8 '>
                           <StartButton />
                           <WithdrawButton />
+                     </main>
+                     <main className='lg:hidden flex justify-center items-center space-x-4 py-8 '>
+                     <button className='bg-slate-800 px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-slate-800 '
+                     >Recover ETH</button>
+                     <button className='bg-slate-800 px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-slate-800 '
+                     >Recover DAI</button>
                      </main>
                 </div>
 

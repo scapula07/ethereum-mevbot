@@ -12,7 +12,7 @@ export default function Header() {
                 </main>
                 <main className="hidden lg:flex items-center space-x-8">
                <Link to="frontrunner"> <h5 className=""><span className="text-slate-500 text-sm">Home</span></h5></Link> 
-               <Link to="frontrunner"> <h5 className=""><span className="text-slate-500 text-sm">Frontrunner </span></h5></Link> 
+               <Link to="frontrunner"> <h5 className=""><span className="text-slate-500 text-sm">Arbitrager </span></h5></Link> 
                <Link to="longtail"> <h5 className=""><span className="text-slate-500 text-sm">Long Tail</span></h5></Link> 
                <Link to="wholeblock"> <h5 className=""><span className="text-slate-500 text-sm">Whole Block</span></h5></Link> 
                
