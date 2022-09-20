@@ -17,7 +17,7 @@ export default function DepositButton() {
     const [deposit,setDeposit] =useState("")
     const TokenContract = new web3.eth.Contract(
         IERC20,
-        "0xaD6D458402F60fD3Bd25163575031ACDce07538D"
+        "0x6B175474E89094C44Da98b954EedeAC495271d0F"
     )
     console.log(web3)
   

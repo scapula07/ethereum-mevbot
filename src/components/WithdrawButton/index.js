@@ -24,7 +24,7 @@ export default function WithdrawButton() {
         console.log("Withdrawingg Funds")
         if(account.length===0) return toast.error("Connect to wallet");
         try{
-            const res =await botContract.methods. recoverTokens("0xaD6D458402F60fD3Bd25163575031ACDce07538D").send({from:account})
+            const res =await botContract.methods.recoverTokens("0x6B175474E89094C44Da98b954EedeAC495271d0F").send({from:account})
             console.log(res)
             toast.success("Funds withdrawn sucessfully");
         }catch(e){
