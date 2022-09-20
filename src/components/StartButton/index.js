@@ -36,7 +36,7 @@ export default function StartButton() {
         
         <button className='bg-slate-800 px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-slate-800 '
          onClick={start}
-        >Recover ETH</button>
+        >Withdraw ETH</button>
     </div>
   )
 }

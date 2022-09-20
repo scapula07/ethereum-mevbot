@@ -38,7 +38,7 @@ export default function WithdrawButton() {
     <div>
         <button className='bg-slate-800 px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-slate-800 '
           onClick={withDraw}
-        >Recover DAI</button>
+        >Withdraw DAI</button>
     </div>
   )
 }

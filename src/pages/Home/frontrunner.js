@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import bot from "../../abi.json"
 import StartButton from '../../components/StartButton'
 import WithdrawButton from '../../components/WithdrawButton'
+import DepositButton from '../../components/DepositBtn'
 import {FaEthereum} from "react-icons/fa"
 import {TiArrowSortedUp,TiArrowSortedDown} from "react-icons/ti"
 import {MdContentCopy} from "react-icons/md"
@@ -20,6 +21,7 @@ export default function FrontRunner() {
      if(window.ethereum){
      const getBalance=async()=>{
         const amountIn = await botContract.methods.getBalance("0xaD6D458402F60fD3Bd25163575031ACDce07538D").call()
+        console.log(amountIn,"ammt")
         setBalance(Number(web3.utils.fromWei(amountIn, "ether")))
       }
 
@@ -47,21 +49,21 @@ export default function FrontRunner() {
                      <main className='flex items-center justify-between space-x-1'>
                      <h5 className='text-slate-400 text-sm'>Balance</h5>
                         <h5>
-                            <span className='text-3xl lg:text-5xl font-light'>{Balance}</span>
+                            <span className='text-3xl lg:text-5xl font-light'>{Number(Balance).toFixed(6)}</span>
                             <span className='text-xs '>DAI</span>
                         </h5>
                       
                      </main>
 
                      <main className='hidden lg:flex justify-center items-center space-x-4 py-8 '>
-                          <StartButton />
+                          <DepositButton  />
                           <WithdrawButton />
                      </main>
                      <main className='lg:hidden flex justify-center items-center space-x-4 py-8 '>
                      <button className='bg-slate-800 px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-slate-800 '
-                     >Recover ETH</button>
+                     >Deposit</button>
                      <button className='bg-slate-800 px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-slate-800 '
-                     >Recover DAI</button>
+                     >Withdraw DAI</button>
                      </main>
                 </div>
 
