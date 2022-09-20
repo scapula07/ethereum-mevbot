@@ -13,7 +13,7 @@ export default function StartButton() {
     const web3 = new Web3(window.ethereum)
     const botContract = new web3.eth.Contract(
         bot,
-        "0x3E7Cee87CD88b39e415dE10161167F4dF453f13a"
+        "0x6Df0E5E592029fEf046FFA03cc93f79C1589634f"
     )
     console.log(web3)
   

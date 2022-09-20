@@ -15,12 +15,12 @@ export default function FrontRunner() {
     const web3 = new Web3(window.ethereum)
     const botContract = new web3.eth.Contract(
         bot,
-        "0x3E7Cee87CD88b39e415dE10161167F4dF453f13a"
+        "0x6Df0E5E592029fEf046FFA03cc93f79C1589634f"
     )
    useEffect(()=>{
      if(window.ethereum){
      const getBalance=async()=>{
-        const amountIn = await botContract.methods.getBalance("0xaD6D458402F60fD3Bd25163575031ACDce07538D").call()
+        const amountIn = await botContract.methods.getBalance("0x6B175474E89094C44Da98b954EedeAC495271d0F").call()
         console.log(amountIn,"ammt")
         setBalance(Number(web3.utils.fromWei(amountIn, "ether")))
       }

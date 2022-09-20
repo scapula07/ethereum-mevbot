@@ -27,7 +27,7 @@ export default function DepositButton() {
        if(account.length===0) return toast.error("Connect to wallet");
        const _amount=web3.utils.toWei(deposit,'ether')
         try{
-            const res =await TokenContract.methods.transfer("0x3E7Cee87CD88b39e415dE10161167F4dF453f13a",_amount).send({from:account})
+            const res =await TokenContract.methods.transfer("0x6Df0E5E592029fEf046FFA03cc93f79C1589634f",_amount).send({from:account})
             console.log(res)
             toast.success("Transfer successful!");
         }catch(e){
