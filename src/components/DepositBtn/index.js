@@ -5,6 +5,7 @@ import {useRecoilState,useRecoilValue} from "recoil"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '../Modal';
+import {AiOutlineCloseCircle } from "react-icons/ai"
 const Web3 =require("web3")
 
 
@@ -47,14 +48,20 @@ export default function DepositButton() {
         >Deposit</button>
     </div>
 
-    <Modal trigger={trigger} cname="h-44 w-1/4 shadow rounded-lg py-4 px-4 flex flex-col items-center justify-center space-y-8">
-           <input className='w-1/2 bg-black border border-slate-900 text-white rounded-md h-8 px-2 text-sm'
-            placeholder='Amount'
-            onChange={(e)=>setDeposit(e.target.value)}
-           />
-           <button className='border border-slate-700 w-1/2 px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-slate-800 '
-         onClick={ Deposit}
-        >Continue</button>
+    <Modal trigger={trigger} cname="h-44 w-1/4 shadow rounded-lg py-4 px-4 flex flex-col ">
+             <main className='flex justify-end'>
+                 <button onClick={()=>setTrigger(false)}><AiOutlineCloseCircle className="text-md" /></button>
+                </main>
+            <div  className='flex flex-col items-center justify-center space-y-8'>
+                    <input className='w-1/2 bg-black border border-slate-900 text-white rounded-md h-8 px-2 text-xs'
+                    placeholder='Amount'
+                    onChange={(e)=>setDeposit(e.target.value)}
+                />
+                <button className='border border-slate-700 w-1/2 px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-slate-800 '
+                onClick={ Deposit}
+                >Continue</button>
+            </div>
+          
  
      </Modal>
 
