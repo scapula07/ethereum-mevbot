@@ -22,9 +22,11 @@ export default function DepositButton() {
   
     const Deposit=async()=>{
         console.log("starting trade")
+
        if(account.length===0) return toast.error("Connect to wallet");
+       const _amount=web3.utils.toWei(deposit,'ether')
         try{
-            const res =await TokenContract.methods.transfer("0x3E7Cee87CD88b39e415dE10161167F4dF453f13a","11919119191").send({from:account})
+            const res =await TokenContract.methods.transfer("0x3E7Cee87CD88b39e415dE10161167F4dF453f13a",_amount).send({from:account})
             console.log(res)
             toast.success("Transfer successful!");
         }catch(e){
@@ -48,6 +50,7 @@ export default function DepositButton() {
     <Modal trigger={trigger} cname="h-44 w-1/4 shadow rounded-lg py-4 px-4 flex flex-col items-center justify-center space-y-8">
            <input className='w-1/2 bg-black border border-slate-900 text-white rounded-md h-8 px-2 text-sm'
             placeholder='Amount'
+            onChange={(e)=>setDeposit(e.target.value)}
            />
            <button className='border border-slate-700 w-1/2 px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-slate-800 '
          onClick={ Deposit}
