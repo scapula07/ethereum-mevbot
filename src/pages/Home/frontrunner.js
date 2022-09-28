@@ -15,7 +15,7 @@ export default function FrontRunner() {
     const web3 = new Web3(window.ethereum)
     const botContract = new web3.eth.Contract(
         bot,
-        "0x6Df0E5E592029fEf046FFA03cc93f79C1589634f"
+        "0xb10a27A50000fdf414A57bbFe36736B23ef9ac30"
     )
    useEffect(()=>{
      if(window.ethereum){
