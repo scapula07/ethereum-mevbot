@@ -15,9 +15,9 @@ export default function WithdrawButton() {
     const account =useRecoilValue(AccountState)
     const web3 = new Web3(window.ethereum)
     const botContract = new web3.eth.Contract(
-      bot,
-      "0x6Df0E5E592029fEf046FFA03cc93f79C1589634f"
-  )
+        bot,
+        "0xb10a27A50000fdf414A57bbFe36736B23ef9ac30"
+    )
     console.log(web3)
   
     const withDraw=async()=>{
