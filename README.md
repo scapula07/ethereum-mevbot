@@ -1,5 +1,4 @@
-# Getting Started with Create React App
-
+A Sandwich mev bot that takes hijack profitable transactions from the mev pool.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
